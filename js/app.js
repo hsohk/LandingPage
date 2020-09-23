@@ -1,36 +1,33 @@
 /**
- * 
+ *
  * Manipulating the DOM exercise.
  * Exercise programmatically builds navigation,
  * scrolls to anchors from navigation,
  * and highlights section in viewport upon scrolling.
- * 
+ *
  * Dependencies: None
- * 
+ *
  * JS Version: ES2015/ES6
- * 
+ *
  * JS Standard: ESlint
- * 
-*/
+ *
+ */
 
 /**
  * Define Global Variables
- * 
-*/
-const sectionTitles = document.querySelectorAll(".landing__container");
+ *
+ */
 const sections = document.querySelectorAll("section");
 const navbarList = document.querySelector("#navbar__list")
 const nav = document.querySelector("nav");
 /**
  * End Global Variables
  * Start Helper Functions
- * 
-*/
-function scrollToSection(){
-
-}
+ *
+ */
 
 //Add Item To Nav Element
+// li will be added and eventLister for click also will be added
 function addItemsToNav(sections, navbarList){
     for(const section of sections) {
         const liElement = document.createElement("li");
@@ -38,14 +35,13 @@ function addItemsToNav(sections, navbarList){
         liElement.textContent = section.dataset.nav;
         //Add Event Listner for moving each section's position
         liElement.addEventListener('click',function(evt){
-            console.log(evt.target.textContent);
             window.scrollTo({top: section.offsetTop - nav.getBoundingClientRect().height ,behavior: 'smooth'});
-            console.log(section.getBoundingClientRect().top);
         })
         navbarList.appendChild(liElement);
     }
 }
 
+//Check the each sections' position and add/remove "your-active-class"
 function updateActive(){
     let flag=true;
     for(const section of sections){
@@ -68,8 +64,8 @@ function updateActive(){
 /**
  * End Helper Functions
  * Begin Main Functions
- * 
-*/
+ *
+ */
 
 
 // build the nav
@@ -84,5 +80,5 @@ window.onresize = updateActive;
 /**
  * End Main Functions
  * Begin Events
- * 
-*/
+ *
+ */
