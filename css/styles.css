@@ -60,6 +60,10 @@ section {
     min-height: 80vh;
 }
 
+li {
+    float: left;
+}
+
 
 /* ---- Module Rules ---- */
 
@@ -83,6 +87,12 @@ section {
 }
 
 .navbar__menu .menu__link:hover {
+    background: #333;
+    color: #fff;
+    transition: ease 0.3s all;
+}
+
+.navbar__menu .your-active-class {
     background: #333;
     color: #fff;
     transition: ease 0.3s all;

@@ -20,6 +20,7 @@
 const sections = document.querySelectorAll("section");
 const navbarList = document.querySelector("#navbar__list")
 const nav = document.querySelector("nav");
+
 /**
  * End Global Variables
  * Start Helper Functions
@@ -34,7 +35,7 @@ function addItemsToNav(sections, navbarList){
         liElement.className = "menu__link";
         liElement.textContent = section.dataset.nav;
         //Add Event Listner for moving each section's position
-        liElement.addEventListener('click',function(evt){
+        liElement.addEventListener('click',function(){
             window.scrollTo({top: section.offsetTop - nav.getBoundingClientRect().height ,behavior: 'smooth'});
         })
         navbarList.appendChild(liElement);
@@ -44,11 +45,31 @@ function addItemsToNav(sections, navbarList){
 //Check the each sections' position and add/remove "your-active-class"
 function updateActive(){
     let flag=true;
+    const listElement = document.querySelectorAll('.menu__link');
+
+    for(let i=0;i<sections.length;i++){
+        if(flag){
+            //Assume that Box which box.bottom is shown in first is read by user
+            if(sections[i].getBoundingClientRect().bottom < nav.getBoundingClientRect().height+1) {
+                // Do Nothing
+            }
+            else {
+                sections[i].classList.add("your-active-class");
+                listElement[i].classList.add("your-active-class");
+                flag=false;
+            }
+        }
+        else {
+            sections[i].classList.remove("your-active-class");
+            listElement[i].classList.remove("your-active-class");
+        }
+    }
+    /*
     for(const section of sections){
         if(flag){
             //Assume that Box which box.bottom is shown in first is read by user
             if(section.getBoundingClientRect().bottom < nav.getBoundingClientRect().height+1) {
-                continue;
+                // Do Nothing
             }
             else {
                 section.classList.add("your-active-class");
@@ -58,7 +79,7 @@ function updateActive(){
         else {
             section.classList.remove("your-active-class");
         }
-    }
+    }*/
 }
 
 /**
