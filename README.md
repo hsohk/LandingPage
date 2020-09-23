@@ -1,13 +1,24 @@
-# Landing Page Project
+# Landing Page
 
-## Table of Contents
+Uacity Nanodegree Course 2nd Project
 
-* [Instructions](#instructions)
+## Repo
 
-## Instructions
+```
+css
+- styles.css    
+index.html
+js
+- app.js
+README.md
+```
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+## Implemented
 
-To get started, open `js/app.js` and start building out the app's functionality
+1. Navigation is build dynamically as unordered list
+2. Highlight section which is being viewd
+3. Scroll to section when click the navi menu
 
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+## Contact
+
+he@mare5.com
