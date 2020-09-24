@@ -46,7 +46,23 @@ function addItemsToNav(sections, navbarList){
 function updateActive(){
     let flag=true;
     const listElement = document.querySelectorAll('.menu__link');
-
+    //Assume that Box which is shown more than 50% is the section which is being read by user
+    for(let i=0;i<sections.length;i++){
+        const top = nav.offsetHeight>sections[i].getBoundingClientRect().top?
+            nav.offsetHeight:sections[i].getBoundingClientRect().top;
+        const btm = window.innerHeight<sections[i].getBoundingClientRect().bottom?
+            window.innerHeight:sections[i].getBoundingClientRect().bottom
+        if( btm-top > sections[i].offsetHeight*0.5){
+            sections[i].classList.add("your-active-class");
+            listElement[i].classList.add("your-active-class");
+        }
+        else {
+            sections[i].classList.remove("your-active-class");
+            listElement[i].classList.remove("your-active-class");
+        }
+    }
+    //Assume that Box which box.bottom is shown in first is read by user
+    /*
     for(let i=0;i<sections.length;i++){
         if(flag){
             //Assume that Box which box.bottom is shown in first is read by user
@@ -64,22 +80,8 @@ function updateActive(){
             listElement[i].classList.remove("your-active-class");
         }
     }
-    /*
-    for(const section of sections){
-        if(flag){
-            //Assume that Box which box.bottom is shown in first is read by user
-            if(section.getBoundingClientRect().bottom < nav.getBoundingClientRect().height+1) {
-                // Do Nothing
-            }
-            else {
-                section.classList.add("your-active-class");
-                flag=false;
-            }
-        }
-        else {
-            section.classList.remove("your-active-class");
-        }
-    }*/
+    */
+
 }
 
 /**
